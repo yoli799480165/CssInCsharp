@@ -4,7 +4,7 @@ namespace CssInCSharp.Css
 {
     public static class CSSUtil
     {
-        public static string Unit(StringNumber num)
+        public static string Unit(CSSProperties num)
         {
             return "";
         }
@@ -17,22 +17,22 @@ namespace CssInCSharp.Css
 
     public class CSSCalculator
     {
-        public CSSCalculator Add(StringNumber num)
+        public CSSCalculator Add(CSSProperties num)
         {
             return this;
         }
 
-        public CSSCalculator Sub(StringNumber num)
+        public CSSCalculator Sub(CSSProperties num)
         {
             return this;
         }
 
-        public CSSCalculator Mul(StringNumber num)
+        public CSSCalculator Mul(CSSProperties num)
         {
             return this;
         }
 
-        public CSSCalculator Div(StringNumber num)
+        public CSSCalculator Div(CSSProperties num)
         {
             return this;
         }
