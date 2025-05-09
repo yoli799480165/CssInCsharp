@@ -700,7 +700,7 @@ Style组件属性列表:
 ```
 
 ## 自定义组件样式
-在页面上，你可以使用`<StyleContent>`组件来添加页面样式。但是StyleContent并不能用在自定义的组件里。例如创建一个`<DemoComponent>`组件，该如何为这个自定义组件添加样式。CssInCsharp提供一个全局的Helper类`StyleHelper`。你可以使用`Register`方法来向head标签里注入样式。
+在自定义组件中，可以通过注入`StyleService`服务类来为组件添加样式。
 
 DemoComponent.razor演示代码：
 ```csharp

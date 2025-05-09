@@ -8,9 +8,39 @@ A lib for generating Style Sheets with C#.
 [![CssInCSharp](https://img.shields.io/nuget/v/CssInCSharp.svg?color=red&style=flat-square)](https://www.nuget.org/packages/CssInCsharp)
 
 ## Getting started
-```sh
-dotnet add package CssInCSharp
-```
+- Install package
+  ```sh
+  dotnet add package CssInCSharp
+  ```
+- Register the services in Program.cs
+  ```csharp
+  builder.Services.AddCssInCSharp();
+  ```
+- Add RootComponent
+  ```csharp
+  // for WebAssembly in Program.cs
+  builder.RootComponents.Add<App>("#app");
+  // Add StyleOutlet to RootComponent
+  builder.RootComponents.Add<StyleOutlet>("head::after");
+  builder.RootComponents.Add<HeadOutlet>("head::after");
+  ```
+  OR
+  ```html
+  <!--for blazor server in App.razor-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <!--Add StyleOutlet to head-->
+    <StyleOutlet />
+    ...
+    <HeadOutlet />
+  </head>
+  ```
+- Add namespace in _Imports.razor
+  ```csharp
+  @using CssInCSharp
+  ```
 
 ## Usage
 - Used within a native `<style>` tag.
@@ -70,7 +100,7 @@ dotnet add package CssInCSharp
 
 <!-- style in head -->
 <StyleContent>
-    <Style StyleFn="@StyleInHead" Path="Basic|StyleTag"></Style>
+    <Style StyleFn="@StyleInHead"></Style>
 </StyleContent>
 
 <!--style in body-->
@@ -106,93 +136,37 @@ dotnet add package CssInCSharp
 }
 ```
 
-- Use StyleHelper to inject styles in custom components.
+- Use `StyleService` to inject styles in custom components.
 ```csharp
-<div class="@_token.HashId @Name">
-    @foreach (var item in Items)
-    {
-        <div class="item">@item</div>
-    }
+<div class="@className">
 </div>
 
 @code {
-    [Parameter] 
-    public string[] Items { get; set; }
+    private string className;
 
-    [Parameter]
-    public int Width { get; set; } = 500;
+    [Inject] public StyleService StyleService { get; set; }
 
     protected override void OnInitialized()
     {
         // use style helper to register style
-        StyleHelper.Register(new StyleInfo
+        className = StyleService.Register(new CSSObject
         {
-            HashId = _token.HashId,
-            Path = new string[]{ "component", "demo" },
-            StyleFn = UseStyle
+            BackgroundColor = token.ColorBgLayout,
+            BorderRadius = token.BorderRadiusLG,
+            MaxWidth = 400,
+            Width = "100%",
+            Height = 180,
+            Display = "flex",
+            AlignItems = "center",
+            JustifyContent = "center",
+            FlexDirection = "column",
+            MarginLeft = "auto",
+            MarginRight = "auto",
         });
     }
-
-    private CSSInterpolation UseStyle()
-    {
-        ...
-    }
 }
 ```
 
-- Inject a `CSSObject` or `CSSString` into the head.
-```csharp
-@_node
-
-@code {
-
-    private RenderFragment _node;
-
-    protected override void OnInitialized()
-    {
-        var styles = new
-        {
-            container = new CSSObject
-            {
-                BackgroundColor = token.ColorBgLayout,
-                BorderRadius = token.BorderRadiusLG,
-                MaxWidth = 400,
-                Width = "100%",
-                Height = 180,
-                Display = "flex",
-                AlignItems = "center",
-                JustifyContent = "center",
-                FlexDirection = "column",
-                MarginLeft = "auto",
-                MarginRight = "auto",
-            },
-
-            card = CSS($$""""
-                box-shadow: {{token.BoxShadow}};
-                padding: {{token.Padding}}px;
-                border-radius: {{token.BorderRadius}}px;
-                color: {{token.ColorTextTertiary}};
-                background: {{token.ColorBgContainer}};
-                transition: all 100ms {{token.MotionEaseInBack}};
-
-                margin-bottom: 8px;
-                cursor: pointer;
-
-                &:hover {
-                  color: {{token.ColorTextSecondary}};
-                  box-shadow: {{token.BoxShadowSecondary}};
-                }
-            """"),
-        };
-        // The CX and CSS methods are defined in the StyleHelper class.
-        // @using static CssInCSharp.StyleHelper
-        _node = @<div class="@CX("a-simple-create-style-demo-classname", styles.container)">
-                    <div class="@styles.card">createStyles Demo</div>
-                    <div>Current theme mode: dark</div>
-                </div>;
-    }
-}
-```
 For other examples, you can check out the example code. For more information, please refer to the [document](./docs/index.md).
 
 ## Css Compiler

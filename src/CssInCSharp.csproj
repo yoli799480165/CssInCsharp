@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;net5;net6;net7;net8;net9.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <OutputType>Library</OutputType>
     <IsPackable>true</IsPackable>
@@ -37,27 +37,27 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework) == 'netstandard2.1'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.32" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(TargetFramework) == 'net5'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+  <ItemGroup Condition="$(TargetFramework) == 'net5.0'">
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.17" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(TargetFramework) == 'net6'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
+  <ItemGroup Condition="$(TargetFramework) == 'net6.0'">
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.36" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(TargetFramework) == 'net7'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
+  <ItemGroup Condition="$(TargetFramework) == 'net7.0'">
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.20" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(TargetFramework) == 'net8'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
+  <ItemGroup Condition="$(TargetFramework) == 'net8.0'">
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.15" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework) == 'net9.0'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>

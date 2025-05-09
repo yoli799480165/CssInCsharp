@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CssInCSharp.Tests", "test\C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CssInCSharp.Benchmarks", "benchmark\CssInCSharp.Benchmarks\CssInCSharp.Benchmarks.csproj", "{D962B903-9225-4A8A-BA59-6E5B4AEC3F08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples.Server", "examples\Examples.Server\Examples.Server.csproj", "{B288EEFA-4D34-4CC0-B498-9541D13D891A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{D962B903-9225-4A8A-BA59-6E5B4AEC3F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D962B903-9225-4A8A-BA59-6E5B4AEC3F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D962B903-9225-4A8A-BA59-6E5B4AEC3F08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B288EEFA-4D34-4CC0-B498-9541D13D891A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B288EEFA-4D34-4CC0-B498-9541D13D891A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B288EEFA-4D34-4CC0-B498-9541D13D891A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B288EEFA-4D34-4CC0-B498-9541D13D891A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{25DAE86F-F572-49C7-B989-834489F4B018} = {88F10CF7-CAB8-4BCC-9989-4FF19AEDF449}
 		{3A5C3FD4-3D1D-4CC7-B01E-AABB60B2FF13} = {285BBCAE-8461-4150-A830-F7F06388A0B9}
 		{D962B903-9225-4A8A-BA59-6E5B4AEC3F08} = {98DC1D7D-187D-4CC2-88E0-386E4E3C69BF}
+		{B288EEFA-4D34-4CC0-B498-9541D13D891A} = {88F10CF7-CAB8-4BCC-9989-4FF19AEDF449}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03E4F30D-3A2E-4026-A665-8631C0C1188A}

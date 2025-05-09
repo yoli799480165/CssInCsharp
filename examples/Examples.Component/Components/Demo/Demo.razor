@@ -1,27 +1,62 @@
 ﻿@namespace Examples.Component
 
-<div class="@_token.HashId @Name">
+<div class="@hashId @Name">
     @foreach (var item in Items)
     {
         <div class="item">@item</div>
     }
 </div>
 
+@* <StyleContent> *@
+@*     <Style StyleFn="GenStyle" HashId="@hashId" Path="component|demo"></Style> *@
+@* </StyleContent> *@
+
 @code {
+    private const string Name = "demo";
+    private const string ClassName = $".{Name}";
+    private string hashId = "zxcv";
+
     [Parameter] 
     public string[] Items { get; set; }
 
     [Parameter]
     public int Width { get; set; } = 500;
 
+    [Inject] StyleService StyleService { get; set; } = default!;
+
     protected override void OnInitialized()
     {
-        // use style helper to register style
-        StyleHelper.Register(new StyleInfo
+        StyleService.Register(new StyleInfo
         {
-            HashId = _token.HashId,
-            Path = new string[]{ "component", "demo" },
-            StyleFn = UseStyle
+            HashId = hashId,
+            Path = ["component", "demo"],
+            StyleFn = GenStyle
         });
+    }
+
+    private CSSInterpolation GenStyle()
+    {
+        return new CSSObject
+        {
+            [ClassName] = new CSSObject
+            {
+                Width = $"{Width}px",
+                MinHeight = "300px",
+                Display = "flex",
+                FlexDirection = "row",
+                FlexWrap = "wrap",
+                JustifyContent = "space-between",
+                ["& .item"] = new CSSObject
+                {
+                    Width = "80px",
+                    Height = "100px",
+                    Border = "1px solid #DDD",
+                    TextAlign = "center",
+                    Display = "flex",
+                    AlignItems = "center",
+                    JustifyContent = "center"
+                }
+            }
+        };
     }
 }

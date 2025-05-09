@@ -127,7 +127,7 @@ namespace CssInCSharp
         public void Attach(RenderHandle renderHandle)
         {
             _renderHandle = renderHandle;
-            _registry = StyleHelper.StyleRegistry;
+            _registry = StyleService.StyleRegistry;
         }
 
         public Task SetParametersAsync(ParameterView parameters)
@@ -235,7 +235,7 @@ namespace CssInCSharp
 
         void IComponent.Attach(RenderHandle renderHandle)
         {
-            _registry = StyleHelper.StyleRegistry;
+            _registry = StyleService.StyleRegistry;
         }
 
         Task IComponent.SetParametersAsync(ParameterView parameters)

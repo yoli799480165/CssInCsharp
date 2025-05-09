@@ -1,6 +1,20 @@
 ﻿@page "/"
 
-<Demo Items="@_data" Width="500"></Demo>
+<div class="code-box">
+    <Demo Items="@_data" Width="600"></Demo>
+    <Demo Items="@_data" Width="300"></Demo>
+</div>
+
+<StyleContent>
+    <style>
+        .code-box {
+            width: 100%;
+            padding: 10px;
+            color: #000;
+            border: 1px solid #DDD;
+        }
+    </style>
+</StyleContent>
 
 @code
 {

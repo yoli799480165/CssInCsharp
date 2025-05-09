@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-#if NET6_0_OR_GREATER
-using Microsoft.AspNetCore.Components.Web;
-#endif
 
 namespace CssInCSharp
 {
@@ -10,8 +7,6 @@ namespace CssInCSharp
     {
         internal const string StyeSectionOutletName = "cssincsharp_style";
         internal const string InternalStyeSectionOutletName = "cssincsharp_style_internal";
-
-        [Parameter] public bool HeadOutletRender { get; set; } = true;
 
         /*
          * using SectionOutlet to render style tag
@@ -37,15 +32,6 @@ namespace CssInCSharp
             // internal style container
             builder.OpenComponent<StyleContentInternal>(i++);
             builder.CloseComponent();
-
-#if NET6_0_OR_GREATER
-            // render default HeadOutlet
-            if (HeadOutletRender)
-            {
-                builder.OpenComponent<HeadOutlet>(i++);
-                builder.CloseComponent();
-            }
-#endif
         }
     }
 }
